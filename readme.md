@@ -15,11 +15,5 @@ npm install @chroniconl/stylist
 Import the CSS file into your project:
 
 ```js
-import '@chroniconl/stylist/dist/chroniconl-stylist.css';
-```
-
-Or the minified version:
-
-```js
-import '@chroniconl/stylist/dist/chroniconl-stylist.min.css';
+import '@chroniconl/stylist';
 ```
