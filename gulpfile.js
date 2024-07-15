@@ -17,17 +17,16 @@ const cssMixinsPlugin = require('postcss-mixins');
 const calcPlugin = require('postcss-calc');
 const nestingPlugin = require('postcss-nesting');
 const customMediaPlugin = require('postcss-custom-media');
-
+const concat = require('gulp-concat');
 function buildStyles() {
 	// convert CSS variables to static values for older browsers
 	const cssVariablesConfig = cssVariablesPlugin({
 		variables: {
-			'--primary-color': '#FFD600',
-			'--neutrals-dark': '#000000',
-			'--neutrals-greydark': '#B9B9B9',
-			'--neutrals-grey': '#D9D9D9',
-			'--neutrals-greylight': '#F1F1F1',
-			'--neutrals-light': '#FFFFFF'
+			'--theme-primary': '#FFD600',
+			'--base-black': '#000000',
+			'--base-white': '#FFFFFF',
+			'--text-primary': '#FFFFFF',
+			'--text-secondary': '#a2a2a2',
 		}
 	});
 	const cssMixinsConfig = cssMixinsPlugin({});
@@ -101,6 +100,12 @@ function buildSass() {
 		.pipe(gulp.dest('src/'))
 }
 
+function combineStyles() {
+	return gulp.src('dist/*.css') // Get all individual stylesheets from dist
+		.pipe(concat('chroniconl-stylist.css')) // Combine them into one file
+		.pipe(gulp.dest('dist')); // Write the combined file to dist
+}
+
 /**
  * @name build - npm run build
  * @readme a series of tasks to build the CSS files 
@@ -110,7 +115,7 @@ function buildSass() {
  * @note if you want to use scss files, you can use the `buildSass` task at your own risk
  * it would need to be treated as a preprocess step before the `buildStyles` task
  */
-const build = gulp.series(/*buildSass,*/ buildStyles, lintDevCode, minifyCSS /*...*/);
+const build = gulp.series(/*buildSass,*/ buildStyles, lintDevCode, minifyCSS, combineStyles /*...*/);
 
 gulp.task('build-sass', buildSass);
 gulp.task('build-styles', buildStyles);
