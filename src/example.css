@@ -18,11 +18,11 @@ body {
     background: var(--blue);
   }
 
-	@media (--screen-tablet) {
-		background: var(--black);
-	}
+  @media (--screen-tablet) {
+    background: var(--black);
+  }
 
-	@media (--screen-desktop) {
-		background: var(--blue);
-	}
+  @media (--screen-desktop) {
+    background: var(--blue);
+  }
 }
