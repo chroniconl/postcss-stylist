@@ -1,8 +1,22 @@
 {
   "name": "@chroniconl/stylist",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.1-alpha.1",
+  "private": false,
   "main": "dist/chroniconl-ui.css",
+  "exports": {
+    ".": {
+      "import": "./dist/chroniconl-stylist.css",
+      "require": "./dist/chroniconl-stylist.css"
+    },
+    "./button": {
+      "import": "./dist/button.css",
+      "require": "./dist/button.css"
+    },
+    "./typography": {
+      "import": "./dist/typography.css",
+      "require": "./dist/typography.css"
+    }
+  },
   "scripts": {
     "build": "npm run build:clean && gulp default && npm run build:format",
     "dev": "gulp watch",
@@ -35,5 +49,9 @@
     "rimraf": "^5.0.5",
     "sass": "^1.72.0",
     "stylelint": "^16.3.1"
-  }
+  },
+  "files": [
+    "dist",
+    "readme.md"
+  ]
 }

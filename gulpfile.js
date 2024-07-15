@@ -122,8 +122,9 @@ function combineStyles() {
 const build = gulp.series(
   /*buildSass,*/ buildStyles,
   lintDevCode,
-  minifyCSS,
-  combineStyles /*...*/
+  combineStyles,
+  minifyCSS
+  /*...*/
 );
 
 gulp.task('build-sass', buildSass);
