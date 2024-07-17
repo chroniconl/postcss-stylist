@@ -45,6 +45,8 @@
 }
 
 @define-mixin ButtonSecondaryMarketing {
+  @mixin ButtonSecondary;
+
   color: #000;
   background-color: #fff;
   outline: 1px solid transparent; /* outside */
@@ -53,6 +55,17 @@
 
   &:hover {
     background-color: #f1f1f1;
+  }
+}
+
+@define-mixin ButtonPrimaryOutline {
+  @mixin ButtonPrimary;
+
+  border: 1px solid #2a2422; /* inside */
+
+  &:hover {
+    border: 1px solid #0f0f0f; /* inside */
+    background-color: #2a2422;
   }
 }
 
@@ -70,4 +83,8 @@
 
 .ch-button-secondary-marketing {
   @mixin ButtonSecondaryMarketing;
+}
+
+.ch-button-primary-outline {
+  @mixin ButtonPrimaryOutline;
 }
